@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# This script enforces adding one of the allowed semantic prefixes in commit messages.
+
+# Define the allowed semantic prefixes enclosed in brackets
+ALLOWED_PREFIXES="[feat]|[chore]|[style]|[docs]|[init]|[refactor]|[test]"
+
+commit_message_file="$1"
+commit_message=$(cat "$commit_message_file")
+
+# Check if the commit message starts with one of the allowed prefixes
+if ! echo "$commit_message" | grep -qiE "^\[($ALLOWED_PREFIXES)\]"; then
+    echo "ERROR: Commit message must start with one of the following semantic prefixes: [feat], [chore], [style], [docs], [init], [refactor], [test]"
+    exit 1  # Exit with an error status
+fi
