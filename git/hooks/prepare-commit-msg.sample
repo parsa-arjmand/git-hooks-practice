@@ -54,4 +54,4 @@ if not re.match(pattern, commit_msg):
 # then
 #   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
 # fi
-#for test
+#for test better 2
