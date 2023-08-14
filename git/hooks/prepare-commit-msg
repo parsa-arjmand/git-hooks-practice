@@ -1,0 +1,17 @@
+#!/bin/bash
+
+commit_msg_file="$1"
+
+# Read the commit message from the file
+commit_msg=$(cat "$commit_msg_file")
+
+# Define the expected pattern
+pattern="\[[a-zA-Z]+\] : .+"
+
+# Check if the commit message matches the pattern
+if ! [[ "$commit_msg" =~ $pattern ]]; then
+    echo "Error: Commit message format is invalid."
+    echo "Please use the format '[type] : message'."
+    exit 1
+fi
+#for test
