@@ -1,4 +1,4 @@
-# Git Hooks Practice Documentation
+# Custom Git Hooks
 
 ## pre-push
 
