@@ -3,7 +3,7 @@
 # This script enforces adding one of the allowed semantic prefixes in commit messages.
 
 # Define the allowed semantic prefixes enclosed in brackets
-ALLOWED_PREFIXES="[feat]|[chore]|[style]|[docs]|[init]|[refactor]|[test]"
+ALLOWED_PREFIXES="(feat|chore|style|docs|init|fix|refactor|test)" 
 
 commit_message_file="$1"
 commit_message=$(cat "$commit_message_file")
