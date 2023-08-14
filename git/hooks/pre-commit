@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Get the commit message
+commit_message=$(git log -1 HEAD --pretty=format:%s)
+
+# Pattern to match the commit message against
+pattern="^\[feat|fix|docs|style|refactor|test|chore\].*$"
+
+if [[ ! $commit_message =~ $pattern ]]; then
+  echo "ERROR: Commit message does not follow the semantic. It must be in one of these formats:"
+  echo "[feat] message"
+  echo "[fix] message"
+  echo "[docs] message"
+  echo "[style] message"
+  echo "[refactor] message"
+  echo "[test] message"
+  echo "[chore] message"
+  exit 1
+fi
+
+exit 0
