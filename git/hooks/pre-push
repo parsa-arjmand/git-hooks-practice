@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Get the name of the current branch
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# Get the list of changed files
+CHANGED_FILES=$(git diff --name-only $BRANCH_NAME..origin/$BRANCH_NAME)
+
+# Check each changed file for debugging statements
+for FILE in $CHANGED_FILES; do
+  if grep -qE "console.log|debugger" "$FILE"; then
+    echo "Error: Found debugging statement in $FILE"
+    exit 1
+  fi
+done
+
+# If no debugging statements were found, allow the push to proceed
+exit 0
